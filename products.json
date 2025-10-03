@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Veloura Classic Sneaker",
+    "price": 4500,
+    "image": "images/veloura1.jpg",
+    "link": "https://your-payment-link-here"
+  },
+  {
+    "name": "Veloura Running Pro",
+    "price": 5200,
+    "image": "images/veloura2.jpg",
+    "link": "https://your-payment-link-here"
+  },
+  {
+    "name": "Veloura Street Style",
+    "price": 4800,
+    "image": "images/veloura3.jpg",
+    "link": "https://your-payment-link-here"
+  },
+  {
+    "name": "Veloura Leather Edition",
+    "price": 6500,
+    "image": "images/veloura4.jpg",
+    "link": "https://your-payment-link-here"
+  }
+]
