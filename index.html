@@ -3,21 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veloura Shoe Store</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Veloura Shoes</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    header {
+      background: url('images/banner.jpg') no-repeat center center/cover;
+      height: 80vh;
+      display: flex; 
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+    header h1 { font-size: 60px; margin: 0; }
+    header p { font-size: 22px; margin: 10px 0; }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    }
+    .card img { width: 100%; height: 250px; object-fit: cover; }
+    .card h3 { margin: 10px 0; }
+    .price { color: green; font-weight: bold; font-size: 18px; }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: black;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Hero Section -->
   <header>
-    <h1>Veloura Shoe Store</h1>
-    <p>Premium Shoes, Affordable Prices</p>
+    <h1>Veloura Shoes</h1>
+    <p>Comfort | Style | Elegance</p>
   </header>
 
-  <main id="product-list"></main>
+  <!-- Products Section -->
+  <section class="products">
+    <div class="card">
+      <img src="images/shoe1.jpg" alt="Shoe 1">
+      <h3>Veloura Classic</h3>
+      <p class="price">PKR 2,500</p>
+      <a href="https://your-payment-link-here/" class="btn">Buy Now</a>
+    </div>
 
+    <div class="card">
+      <img src="images/shoe2.jpg" alt="Shoe 2">
+      <h3>Veloura Sport</h3>
+      <p class="price">PKR 3,000</p>
+      <a href="https://your-payment-link-here/" class="btn">Buy Now</a>
+    </div>
+
+    <div class="card">
+      <img src="images/shoe3.jpg" alt="Shoe 3">
+      <h3>Veloura Premium</h3>
+      <p class="price">PKR 3,500</p>
+      <a href="https://your-payment-link-here/" class="btn">Buy Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Veloura Shoes</p>
+    <p>&copy; 2025 Veloura Shoes | Contact: info@veloura.com | WhatsApp: +92-XXX-XXXXXXX</p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
