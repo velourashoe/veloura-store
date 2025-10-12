@@ -1,95 +1,141 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veloura Shoes</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Veloura — New Arrivals</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; }
-    header {
-      background: url('images/banner.jpg') no-repeat center center/cover;
-      height: 80vh;
-      display: flex; 
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-    }
-    header h1 { font-size: 60px; margin: 0; }
-    header p { font-size: 22px; margin: 10px 0; }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 40px;
-    }
-    .card {
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      overflow: hidden;
-      text-align: center;
-      padding: 20px;
-      background: #fff;
-      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-    }
-    .card img { width: 100%; height: 250px; object-fit: cover; }
-    .card h3 { margin: 10px 0; }
-    .price { color: green; font-weight: bold; font-size: 18px; }
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: black;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
+    :root{--bg:#fafafa;--card:#ffffff;--muted:#6b7280;--accent:#1f2937}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; margin:0; background:var(--bg); color:var(--accent)}
+    .container{max-width:1100px;margin:32px auto;padding:0 20px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:56px;height:56px;background:linear-gradient(135deg,#e9e8f2,#fff);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+    .controls{display:flex;gap:10px;align-items:center}
+    .search{padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#fff;min-width:220px}
+    .select{padding:10px;border-radius:10px;border:1px solid #e5e7eb;background:#fff}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:600px){.grid{grid-template-columns:1fr}}
+
+    .card{background:var(--card);border-radius:12px;padding:12px;box-shadow:0 6px 18px rgba(16,24,40,0.06);display:flex;flex-direction:column}
+    .thumb{height:220px;border-radius:10px;background:#f3f4f6;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+    .title{font-weight:600;font-size:15px}
+    .price{font-weight:700}
+    .desc{color:var(--muted);font-size:13px;margin-top:6px}
+    .actions{margin-top:12px;display:flex;gap:8px}
+    .btn{flex:1;padding:10px;border-radius:10px;border:0;cursor:pointer}
+    .btn.buy{background:#111827;color:white}
+    .btn.view{background:transparent;border:1px solid #e5e7eb}
+
+    footer{margin:36px 0;text-align:center;color:var(--muted);font-size:13px}
   </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">VS</div>
+        <div>
+          <h1>Veloura — New Arrivals</h1>
+          <p class="lead">Handmade leather shoes — crafted with ❤️. Replace images & product data below with your own before publishing.</p>
+        </div>
+      </div>
 
-  <!-- Hero Section -->
-  <header>
-    <h1>Veloura Shoes</h1>
-    <p>Comfort | Style | Elegance</p>
-  </header>
+      <div class="controls">
+        <input id="q" class="search" placeholder="Search shoes, e.g. 'loafers'" />
+        <select id="sort" class="select">
+          <option value="new">Sort: Newest</option>
+          <option value="price-asc">Price: Low &uarr;</option>
+          <option value="price-desc">Price: High &darr;</option>
+          <option value="name">Name</option>
+        </select>
+      </div>
+    </header>
 
-  <!-- Products Section -->
-  <section class="products">
-    <div class="card">
-      <img src="images/shoe1.jpg" alt="Shoe 1">
-      <h3>Veloura Classic</h3>
-      <p class="price">PKR 2,500</p>
-      <a href="https://your-payment-link-here/" class="btn">Buy Now</a>
-    </div>
+    <main>
+      <section id="products" class="grid"></section>
+    </main>
 
-    <div class="card">
-      <img src="images/shoe2.jpg" alt="Shoe 2">
-      <h3>Veloura Sport</h3>
-      <p class="price">PKR 3,000</p>
-      <a href="https://your-payment-link-here/" class="btn">Buy Now</a>
-    </div>
+    <footer>
+      Tip: Save this file as <strong>new-arrivals.html</strong> (or index.html) and push to your GitHub repo. Enable GitHub Pages from the repo settings to publish.
+    </footer>
+  </div>
 
-    <div class="card">
-      <img src="images/shoe3.jpg" alt="Shoe 3">
-      <h3>Veloura Premium</h3>
-      <p class="price">PKR 3,500</p>
-      <a href="https://your-payment-link-here/" class="btn">Buy Now</a>
-    </div>
-  </section>
+  <script>
+    // ====== SAMPLE PRODUCTS - replace this array with your real product data ======
+    const PRODUCTS = [
+      {id:1,title:"Veloura Classic Loafer",price:5490,slug:"classic-loafer",desc:"Hand-stitched leather loafer, cushioned insole.",img:"https://via.placeholder.com/600x400?text=Loafer+1"},
+      {id:2,title:"Veloura Derby Leather",price:6490,slug:"derby-leather",desc:"Timeless derby with rich finish.",img:"https://via.placeholder.com/600x400?text=Derby+2"},
+      {id:3,title:"Veloura Casual Sneak",price:3990,slug:"casual-sneak",desc:"Casual everyday shoe with soft lining.",img:"https://via.placeholder.com/600x400?text=Sneak+3"},
+      {id:4,title:"Veloura Brogue",price:7290,slug:"veloura-brogue",desc:"Elegant brogue, perfect for special occasions.",img:"https://via.placeholder.com/600x400?text=Brogue+4"},
+      {id:5,title:"Veloura Monk Strap",price:7990,slug:"monk-strap",desc:"Single monk strap with premium buckle.",img:"https://via.placeholder.com/600x400?text=Monk+5"},
+      {id:6,title:"Veloura Slip-on",price:3490,slug:"slip-on",desc:"Easy on/off slip-on, handcrafted.",img:"https://via.placeholder.com/600x400?text=SlipOn+6"},
+      {id:7,title:"Veloura Chelsea",price:6990,slug:"chelsea-boot",desc:"Classic Chelsea with elastic sides.",img:"https://via.placeholder.com/600x400?text=Chelsea+7"},
+      {id:8,title:"Veloura Sandal",price:2990,slug:"leather-sandal",desc:"Comfortable leather sandal for summers.",img:"https://via.placeholder.com/600x400?text=Sandal+8"}
+    ];
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Veloura Shoes | Contact: info@veloura.com | WhatsApp: +92-XXX-XXXXXXX</p>
-  </footer>
+    const productsEl = document.getElementById('products');
+    const qInput = document.getElementById('q');
+    const sortSelect = document.getElementById('sort');
 
+    function money(n){ return 'PKR ' + n.toLocaleString('en-US') }
+
+    function render(list){
+      productsEl.innerHTML = '';
+      if(list.length===0){ productsEl.innerHTML = '<p style="grid-column:1/-1;color:#6b7280">No products found.</p>'; return }
+      list.forEach(p=>{
+        const card = document.createElement('article'); card.className='card';
+        card.innerHTML = `
+          <div class="thumb"><img alt="${p.title}" src="${p.img}" loading="lazy"/></div>
+          <div class="meta">
+            <div>
+              <div class="title">${p.title}</div>
+              <div class="desc">${p.desc}</div>
+            </div>
+            <div class="price">${money(p.price)}</div>
+          </div>
+          <div class="actions">
+            <button class="btn view" onclick="viewProduct('${p.slug}')">View</button>
+            <button class="btn buy" onclick="addToCart(${p.id})">Add to cart</button>
+          </div>
+        `;
+        productsEl.appendChild(card);
+      })
+    }
+
+    function filterAndSort(){
+      const q = qInput.value.trim().toLowerCase();
+      let list = PRODUCTS.filter(p=> p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
+      const s = sortSelect.value;
+      if(s==='price-asc') list.sort((a,b)=>a.price-b.price);
+      if(s==='price-desc') list.sort((a,b)=>b.price-a.price);
+      if(s==='name') list.sort((a,b)=>a.title.localeCompare(b.title));
+      if(s==='new') list = list.slice().reverse(); // assume list is oldest->newest, reverse to show newest
+      render(list);
+    }
+
+    // simple handlers — replace with your real product detail pages / cart integration
+    function viewProduct(slug){
+      alert('Open product page: ' + slug + '\n(Replace this with a link to your product detail page)');
+    }
+    function addToCart(id){
+      const p = PRODUCTS.find(x=>x.id===id);
+      alert(p.title + ' added to cart — implement your checkout flow.');
+    }
+
+    qInput.addEventListener('input', filterAndSort);
+    sortSelect.addEventListener('change', filterAndSort);
+
+    // initial render
+    filterAndSort();
+  </script>
 </body>
 </html>
